@@ -13,7 +13,7 @@ dataSources:
     name: Factory
     network: zkfair
     source:
-      address: '0xe2edb45c7f6d173b85fa1b44f2dec8d8a263ab48'
+      address: '0x8427D1c0AD30439448887DC855a47f090d8D556C'
       abi: Factory
       startBlock: 6610511
     mapping:
@@ -42,7 +42,7 @@ dataSources:
     name: NonfungiblePositionManager
     network: zkfair
     source:
-      address: '0xef6735a24e193b312fd8be8d4774ab40454c9aea'
+      address: '0xd2A5858E82DCF9743eAB21Da049FDa1F86fCD643'
       abi: NonfungiblePositionManager
       startBlock: 6610705
     mapping:
