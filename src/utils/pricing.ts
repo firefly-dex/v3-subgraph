@@ -4,16 +4,17 @@ import { Bundle, Pool, Token } from './../types/schema'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
-const WETH_ADDRESS = '0x4b21b980d0dc7d3c0c6175b0a412694f3a1c7c6b'
-const USDC_WETH_03_POOL = '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8'
+const WETH_ADDRESS = '0xd33db7ec50a98164cc865dfaa64666906d79319c'
+// const USDC_WETH_03_POOL = '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
 export let WHITELIST_TOKENS: string[] = [
-  '0x4b21b980d0dc7d3c0c6175b0a412694f3a1c7c6b', // WETH
+  '0xd33db7ec50a98164cc865dfaa64666906d79319c', // WUSDC
   '0x3f97bf3cd76b5ca9d4a4e9cd8a73c24e32d6c193', // USDT
+  '0xa9f4eeb30dc48d4ef77310a2108816c80457cf6f', // DAI
   '0x813bcb548f99bc081e5efeeaa65e3018befb92ae', // WBTC
-  // '0x6b175474e89094c44da98b954eedeac495271d0f', // DAI
+  '0x4b21b980d0dc7d3c0c6175b0a412694f3a1c7c6b', // WETH
   // '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
   // '0xdac17f958d2ee523a2206206994597c13d831ec7', // USDT
   // '0x0000000000085d4780b73119b644ae5ecd22b376', // TUSD
@@ -37,7 +38,8 @@ export let WHITELIST_TOKENS: string[] = [
 
 let STABLE_COINS: string[] = [
   '0x3f97bf3cd76b5ca9d4a4e9cd8a73c24e32d6c193', // USDT
-  // '0x6b175474e89094c44da98b954eedeac495271d0f',
+  '0xa9f4eeb30dc48d4ef77310a2108816c80457cf6f',
+  '0xd33db7ec50a98164cc865dfaa64666906d79319c',
   // '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
   // '0xdac17f958d2ee523a2206206994597c13d831ec7',
   // '0x0000000000085d4780b73119b644ae5ecd22b376',
@@ -63,12 +65,13 @@ export function sqrtPriceX96ToTokenPrices(sqrtPriceX96: BigInt, token0: Token, t
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
-  let usdcPool = Pool.load(USDC_WETH_03_POOL) // dai is token0
-  if (usdcPool !== null) {
-    return usdcPool.token0Price
-  } else {
-    return ZERO_BD
-  }
+  // let usdcPool = Pool.load(USDC_WETH_03_POOL) // dai is token0
+  // if (usdcPool !== null) {
+  //   return usdcPool.token0Price
+  // } else {
+  //   return ZERO_BD
+  // }
+  return ONE_BD
 }
 
 /**

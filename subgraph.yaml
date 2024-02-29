@@ -13,9 +13,9 @@ dataSources:
     name: Factory
     network: zkfair
     source:
-      address: '0xe2edb45c7f6d173b85fa1b44f2dec8d8a263ab48'
+      address: '0x8427d1c0ad30439448887dc855a47f090d8d556c'
       abi: Factory
-      startBlock: 6610511
+      startBlock: 6743125
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -42,9 +42,9 @@ dataSources:
     name: NonfungiblePositionManager
     network: zkfair
     source:
-      address: '0xef6735a24e193b312fd8be8d4774ab40454c9aea'
+      address: '0xd2A5858E82DCF9743eAB21Da049FDa1F86fCD643'
       abi: NonfungiblePositionManager
-      startBlock: 6610705
+      startBlock: 6743140
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
