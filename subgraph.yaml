@@ -11,11 +11,11 @@ features:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: zkfair
+    network: manta
     source:
-      address: '0x8427d1c0ad30439448887dc855a47f090d8d556c'
+      address: '0x992cf155450d51167ba954908b4d18448926b8bd'
       abi: Factory
-      startBlock: 6743125
+      startBlock: 1474911
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -40,11 +40,11 @@ dataSources:
           handler: handlePoolCreated
   - kind: ethereum/contract
     name: NonfungiblePositionManager
-    network: zkfair
+    network: manta
     source:
-      address: '0xd2A5858E82DCF9743eAB21Da049FDa1F86fCD643'
+      address: '0xeb4af2131e0defe5566962e86fb9b5e97b49ce86'
       abi: NonfungiblePositionManager
-      startBlock: 6743140
+      startBlock: 1474925
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -74,7 +74,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pool
-    network: zkfair
+    network: manta
     source:
       abi: Pool
     mapping:

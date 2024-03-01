@@ -4,19 +4,18 @@ import { Bundle, Pool, Token } from './../types/schema'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
-const WETH_ADDRESS = '0xd33db7ec50a98164cc865dfaa64666906d79319c'
-// const USDC_WETH_03_POOL = '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8'
+const WETH_ADDRESS = '0x0dc808adce2099a9f62aa87d9670745aba741746'
+const USDC_WETH_03_POOL = '0x1535806a0a71fadbe9d181c695f9d85bb6ffc89f'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
 export let WHITELIST_TOKENS: string[] = [
-  '0xd33db7ec50a98164cc865dfaa64666906d79319c', // WUSDC
-  '0x3f97bf3cd76b5ca9d4a4e9cd8a73c24e32d6c193', // USDT
-  '0xa9f4eeb30dc48d4ef77310a2108816c80457cf6f', // DAI
-  '0x813bcb548f99bc081e5efeeaa65e3018befb92ae', // WBTC
-  '0x4b21b980d0dc7d3c0c6175b0a412694f3a1c7c6b', // WETH
-  // '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
-  // '0xdac17f958d2ee523a2206206994597c13d831ec7', // USDT
+  '0x0dc808adce2099a9f62aa87d9670745aba741746', // WETH
+  '0xf417f5a458ec102b90352f697d6e2ac3a3d2851f', // USDT
+  '0x305e88d809c9dc03179554bfbf85ac05ce8f18d6', // WBTC
+  '0xb73603c5d87fa094b7314c74ace2e64d165016fb', // USDC
+  '0x1c466b9371f8aba0d7c458be10a62192fcb8aa71', // DAI
+  '0x95cef13441be50d20ca4558cc0a27b601ac544e5', // MANTA
   // '0x0000000000085d4780b73119b644ae5ecd22b376', // TUSD
   // '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599', // WBTC
   // '0x5d3a536e4d6dbd6114cc1ead35777bab948e3643', // cDAI
@@ -37,9 +36,9 @@ export let WHITELIST_TOKENS: string[] = [
 ]
 
 let STABLE_COINS: string[] = [
-  '0x3f97bf3cd76b5ca9d4a4e9cd8a73c24e32d6c193', // USDT
-  '0xa9f4eeb30dc48d4ef77310a2108816c80457cf6f',
-  '0xd33db7ec50a98164cc865dfaa64666906d79319c',
+  '0xf417f5a458ec102b90352f697d6e2ac3a3d2851f', // USDT
+  '0xb73603c5d87fa094b7314c74ace2e64d165016fb',
+  '0x1c466b9371f8aba0d7c458be10a62192fcb8aa71',
   // '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
   // '0xdac17f958d2ee523a2206206994597c13d831ec7',
   // '0x0000000000085d4780b73119b644ae5ecd22b376',
@@ -65,13 +64,12 @@ export function sqrtPriceX96ToTokenPrices(sqrtPriceX96: BigInt, token0: Token, t
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
-  // let usdcPool = Pool.load(USDC_WETH_03_POOL) // dai is token0
-  // if (usdcPool !== null) {
-  //   return usdcPool.token0Price
-  // } else {
-  //   return ZERO_BD
-  // }
-  return ONE_BD
+  let usdcPool = Pool.load(USDC_WETH_03_POOL) // usdc is token1
+  if (usdcPool !== null) {
+    return usdcPool.token1Price
+  } else {
+    return ZERO_BD
+  }
 }
 
 /**
