@@ -13,9 +13,9 @@ dataSources:
     name: Factory
     network: manta
     source:
-      address: '0x992cf155450d51167ba954908b4d18448926b8bd'
+      address: '0x8666ef9dc0ca5336147f1b11f2c4fc2eca809b95'
       abi: Factory
-      startBlock: 1474911
+      startBlock: 1775680
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -42,9 +42,9 @@ dataSources:
     name: NonfungiblePositionManager
     network: manta
     source:
-      address: '0xeb4af2131e0defe5566962e86fb9b5e97b49ce86'
+      address: '0x1f2c501d98880d4f4011276a89d302622a358068'
       abi: NonfungiblePositionManager
-      startBlock: 1474925
+      startBlock: 1775680
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
